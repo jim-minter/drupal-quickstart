@@ -38,11 +38,7 @@ then
   echo
 
   mkdir -p ${OPENSHIFT_DATA_DIR}downloads
-  if ! drush dl drupal --destination=${OPENSHIFT_DATA_DIR}downloads --yes
-  then
-    echo "ERROR: Unable download and install Drupal."
-    exit 7
-  fi
+  pushd ${OPENSHIFT_DATA_DIR}downloads && tar -xzf ${OPENSHIFT_REPO_DIR}binaries/drupal-7.26.tar.gz && popd
 
   #
   # Link the /current symlink to the latest Drupal instance
